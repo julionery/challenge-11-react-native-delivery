@@ -57,6 +57,7 @@ interface Food {
   description: string;
   price: number;
   image_url: string;
+  thumbnail_url: string;
   formattedPrice: string;
   extras: Extra[];
 }
@@ -169,7 +170,7 @@ const FoodDetails: React.FC = () => {
       name: food.name,
       description: food.description,
       price: food.price,
-      category: food.category,
+      image_url: food.image_url,
       thumbnail_url: food.thumbnail_url,
       extras: extras.filter(extra => {
         return extra.quantity > 1;
@@ -178,7 +179,9 @@ const FoodDetails: React.FC = () => {
 
     Alert.alert('Pedido criado com sucesso!');
 
-    navigation.navigate('Dashboard');
+    navigation.navigate('MainBottom', {
+      screen: 'Orders',
+    });
   }
 
   // Calculate the correct icon name
